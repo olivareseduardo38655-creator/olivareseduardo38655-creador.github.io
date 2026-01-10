@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- VARIABLES DE DISEÑO --- */
         :root {
             --bg-color: #f0f2f5;
             --paper-color: #ffffff;
@@ -16,7 +15,6 @@
             --text-secondary: #5e6d64;
             --accent-green: #0f3d2e;
             --accent-gold: #cfaa6e;
-            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
             --shadow-hover: 0 15px 40px rgba(15, 61, 46, 0.15);
         }
 
@@ -25,120 +23,45 @@
             line-height: 1.8;
             color: var(--text-primary);
             background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        /* Canvas de fondo */
-        #canvas-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
-        }
+        #canvas-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; position: relative; }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        /* --- HEADER & PERFIL --- */
         header { text-align: center; padding: 80px 0 50px; margin-bottom: 40px; }
-
         .profile-container { position: relative; display: inline-block; margin-bottom: 30px; }
-
-        /* FOTO DE PERFIL (Asegúrate de tener perfil.jpg) */
         .profile-img {
-            width: 240px; height: 240px; object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid var(--accent-gold);
-            padding: 5px; background: white;
-            box-shadow: var(--shadow-hover);
-            transition: transform 0.4s;
+            width: 240px; height: 240px; object-fit: cover; border-radius: 50%;
+            border: 5px solid var(--accent-gold); padding: 5px; background: white;
+            box-shadow: var(--shadow-hover); transition: transform 0.4s;
         }
         .profile-img:hover { transform: scale(1.02); border-color: var(--accent-green); }
 
-        h1 {
-            font-family: 'Playfair Display', serif; font-size: 3.8rem; margin: 0;
-            color: var(--accent-green); letter-spacing: -1.5px; line-height: 1.1;
-        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3.8rem; margin: 0; color: var(--accent-green); letter-spacing: -1.5px; line-height: 1.1; }
+        .subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-top: 15px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
 
-        .subtitle {
-            font-size: 1.2rem; color: var(--text-secondary); margin-top: 15px;
-            font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-        }
-
-        /* --- NAVEGACIÓN --- */
-        nav {
-            margin-top: 40px; display: flex; justify-content: center; gap: 30px;
-            border-bottom: 1px solid rgba(207, 170, 110, 0.3); padding-bottom: 20px;
-        }
-
-        nav a {
-            text-decoration: none; color: var(--text-primary);
-            font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem;
-            transition: color 0.3s;
-        }
+        nav { margin-top: 40px; display: flex; justify-content: center; gap: 30px; border-bottom: 1px solid rgba(207, 170, 110, 0.3); padding-bottom: 20px; }
+        nav a { text-decoration: none; color: var(--text-primary); font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
         nav a:hover { color: var(--accent-gold); }
 
-        /* --- SECCIONES --- */
-        section {
-            background: var(--paper-color); padding: 50px; margin-bottom: 50px;
-            border-radius: 8px; box-shadow: var(--shadow-soft);
-            border-top: 4px solid var(--accent-gold);
-        }
+        section { background: var(--paper-color); padding: 50px; margin-bottom: 50px; border-radius: 8px; border-top: 4px solid var(--accent-gold); }
+        h2 { font-family: 'Playfair Display', serif; color: var(--accent-green); font-size: 2.2rem; margin-top: 0; margin-bottom: 30px; border-bottom: 2px solid rgba(15, 61, 46, 0.1); padding-bottom: 15px; }
 
-        h2 {
-            font-family: 'Playfair Display', serif; color: var(--accent-green);
-            font-size: 2.2rem; margin-top: 0; margin-bottom: 30px;
-            border-bottom: 2px solid rgba(15, 61, 46, 0.1); padding-bottom: 15px;
-        }
-
-        /* --- FILTROS DE PROYECTOS --- */
-        .filter-container {
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;
-        }
-
-        .filter-btn {
-            background: transparent; border: 1px solid var(--accent-green);
-            color: var(--accent-green); padding: 8px 16px; border-radius: 20px;
-            cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600;
-            font-size: 0.9rem; transition: all 0.3s;
-        }
+        .filter-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+        .filter-btn { background: transparent; border: 1px solid var(--accent-green); color: var(--accent-green); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; transition: all 0.3s; }
         .filter-btn:hover, .filter-btn.active { background: var(--accent-green); color: white; }
 
-        /* GRID DE PROYECTOS */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-
-        .project-card {
-            background: #fff; padding: 25px; border: 1px solid #eee; border-radius: 6px;
-            transition: all 0.3s ease; display: block;
-        }
+        .project-card { background: #fff; padding: 25px; border: 1px solid #eee; border-radius: 6px; transition: all 0.3s ease; display: block; }
         .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--accent-gold); }
-
         .project-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-top: 0; color: var(--text-primary); }
         .card-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 15px;}
-
         .tags { margin-bottom: 15px; }
-        .tag {
-            display: inline-block; font-size: 0.7rem; background: rgba(15, 61, 46, 0.05);
-            color: var(--accent-green); padding: 3px 8px; border-radius: 4px;
-            margin-right: 4px; margin-bottom: 4px; font-weight: 600;
-        }
-
-        .btn-code {
-            display: inline-block; text-decoration: none; color: var(--accent-gold);
-            font-weight: 700; font-size: 0.9rem; transition: color 0.2s;
-        }
+        .tag { display: inline-block; font-size: 0.7rem; background: rgba(15, 61, 46, 0.05); color: var(--accent-green); padding: 3px 8px; border-radius: 4px; margin-right: 4px; margin-bottom: 4px; font-weight: 600; }
+        .btn-code { display: inline-block; text-decoration: none; color: var(--accent-gold); font-weight: 700; font-size: 0.9rem; transition: color 0.2s; }
         .btn-code:hover { color: var(--accent-green); }
 
-        /* Footer */
         footer { text-align: center; padding: 40px; color: var(--text-secondary); font-size: 0.9rem; }
     </style>
 </head>
@@ -147,15 +70,12 @@
     <canvas id="canvas-bg"></canvas>
 
     <div class="container">
-        
         <header>
             <div class="profile-container">
                 <img src="perfil.jpg" alt="Eduardo Olivares" class="profile-img">
             </div>
-            
             <h1>Eduardo Olivares</h1>
-            <div class="subtitle">Abogado | Ingeniero Financiero - Quantitative Developer | Pianista</div>
-            
+            <div class="subtitle">Abogado | Quantitative Developer | Pianista</div>
             <nav>
                 <a href="#about">Bio</a>
                 <a href="#projects">Catálogo de Proyectos</a>
@@ -167,19 +87,20 @@
         <section id="about">
             <h2>Perfil Profesional</h2>
             <div style="column-count: 1; font-size: 1.05rem; text-align: justify;">
-                <p><strong>La verdadera innovación ocurre en la intersección de disciplinas.</strong></p>
                 <p>
-                    Mi perfil profesional se construye sobre una premisa poco común: la capacidad de traducir la ambigüedad de la <strong>normativa legal</strong> a la precisión determinista de los <strong>modelos matemáticos</strong>. Como Ingeniero Financiero y Abogado, no solo entiendo las reglas del juego financiero; puedo programar los motores que operan dentro de ellas.
+                    Soy un <strong>Ingeniero Financiero y Desarrollador Cuantitativo (Quant Dev)</strong> con una sólida experiencia en modelado matemático, algoritmos de alta frecuencia y computación científica. Especialista en la construcción de motores de riesgo y pricing (Black-Scholes, Monte Carlo) utilizando <strong>Java (Multithreading) y Python</strong>.
                 </p>
                 <p>
-                    Me especializo en <strong>Ingeniería de Cumplimiento</strong> y <strong>Desarrollo Cuantitativo</strong>, diseñando sistemas que son financieramente rentables y legalmente robustos.
+                    Mi perfil se caracteriza por un dominio técnico avanzado en <strong>Ciencia de Datos y Matemáticas Aplicadas</strong> junto con una trayectoria previa en Derecho, lo que me permite liderar proyectos de <strong>Data Governance, Compliance Regulatorio y Auditoría Algorítmica</strong>.
+                </p>
+                <p>
+                    Busco aportar soluciones robustas, escalables y normativamente blindadas en el sector financiero.
                 </p>
             </div>
         </section>
 
         <section id="projects">
             <h2>Catálogo Técnico</h2>
-            
             <div class="filter-container">
                 <button class="filter-btn active" onclick="filterProjects('all')">Todos</button>
                 <button class="filter-btn" onclick="filterProjects('quant')">Quant & Finanzas</button>
@@ -189,28 +110,24 @@
             </div>
 
             <div class="project-grid">
-                
                 <div class="project-card" data-category="quant java">
                     <h3>Motor Pricing Black-Scholes</h3>
                     <p class="card-desc">Implementación desde cero en Java Multihilo para valuación de opciones europeas y cálculo de griegas.</p>
                     <div class="tags"><span class="tag">Java</span><span class="tag">Math</span></div>
                     <a href="#" class="btn-code"><i class="fas fa-code"></i> Ver Repo</a>
                 </div>
-
                 <div class="project-card" data-category="data python">
                     <h3>Pipeline ETL Bancario</h3>
                     <p class="card-desc">Limpieza y transformación de datos financieros masivos para detección de anomalías.</p>
                     <div class="tags"><span class="tag">Python</span><span class="tag">ETL</span></div>
                     <a href="#" class="btn-code"><i class="fas fa-code"></i> Ver Repo</a>
                 </div>
-
                 <div class="project-card" data-category="legal data">
                     <h3>Data Governance Framework</h3>
                     <p class="card-desc">Sistema de auditoría de calidad de datos alineado a normativas BCBS 239 y Ley Fintech.</p>
                     <div class="tags"><span class="tag">Python</span><span class="tag">Compliance</span></div>
                     <a href="#" class="btn-code"><i class="fas fa-code"></i> Ver Repo</a>
                 </div>
-
             </div>
         </section>
 
@@ -221,7 +138,6 @@
     </div>
 
     <script>
-        // FILTROS
         function filterProjects(category) {
             let cards = document.querySelectorAll('.project-card');
             let buttons = document.querySelectorAll('.filter-btn');
@@ -234,8 +150,6 @@
                 }
             });
         }
-
-        // FONDO
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         let particlesArray;
