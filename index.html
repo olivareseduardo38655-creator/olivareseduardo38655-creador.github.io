@@ -3,363 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduardo Olivares | Quant & Law</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Archivo de Credenciales | Eduardo Olivares</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        /* ESTILOS (Misma identidad visual) */
         :root {
-            --bg-color: #f4f1ea;
+            --bg-color: #f0f2f5;
+            --accent-green: #0f3d2e;
+            --accent-gold: #cfaa6e;
             --text-primary: #1a2e22;
-            --text-secondary: #4a5d50;
-            --accent-green: #1B4D3E;
-            --accent-gold: #C5A059;
-            --card-bg: rgba(255, 255, 255, 0.9);
         }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.8;
-            color: var(--text-primary);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+        body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: var(--text-primary); margin: 0; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* HEADER */
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { font-family: 'Playfair Display', serif; color: var(--accent-green); font-size: 2.5rem; }
+        
+        .back-btn {
+            display: inline-block; text-decoration: none; color: var(--text-primary);
+            margin-bottom: 20px; font-weight: 600; transition: color 0.3s;
         }
+        .back-btn:hover { color: var(--accent-gold); }
 
-        #canvas-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-        }
-
-        /* HEADER & FOTO DE PERFIL */
-        header {
-            text-align: center;
-            padding: 60px 0 40px; /* Reduje un poco el padding superior */
-            border-bottom: 2px solid var(--accent-gold);
-            margin-bottom: 40px;
-        }
-
-        /* ESTILO NUEVO PARA LA FOTO */
-        .profile-img {
-            width: 160px; /* Tamaño de la foto */
-            height: 160px;
-            object-fit: cover; /* Evita que la foto se estire/deforme */
-            border-radius: 50%; /* La hace circular */
-            border: 4px solid var(--accent-gold); /* Borde elegante */
-            box-shadow: 0 8px 20px rgba(27, 77, 62, 0.2); /* Sombra suave */
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05); /* Efecto zoom sutil al pasar el mouse */
-            border-color: var(--accent-green);
-        }
-
-        h1, h2, h3 {
+        /* PESTAÑAS (TABS) */
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        
+        .tab-btn {
+            background: #e0e0e0;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
+            font-size: 1rem;
+            border-radius: 8px 8px 0 0;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: white;
             color: var(--accent-green);
+            border-top: 4px solid var(--accent-gold);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
         }
 
-        h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-top: 10px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        nav {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--accent-gold);
-            transition: width 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-gold);
-            width: 100%;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        section {
-            background: var(--card-bg);
+        /* CONTENIDO */
+        .folder-content {
+            background: white;
             padding: 40px;
-            margin-bottom: 40px;
-            border-radius: 4px;
-            border: 1px solid rgba(27, 77, 62, 0.1);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 20px rgba(27, 77, 62, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: none;
+            animation: fadeIn 0.5s;
         }
+        .folder-content.active { display: block; }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* LISTA DE ARCHIVOS */
+        .file-list { list-style: none; padding: 0; }
+        .file-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px; border-bottom: 1px solid #eee; transition: background 0.2s;
         }
-
-        .project-card {
-            background: #fff;
-            padding: 25px;
-            border-top: 3px solid var(--accent-green);
-            transition: all 0.3s ease;
+        .file-item:hover { background: #f9f9f9; }
+        .file-name { font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        
+        .file-link {
+            text-decoration: none; color: white; background: var(--accent-green);
+            padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;
         }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .project-card h3 {
-            margin-top: 0;
-            font-size: 1.4rem;
-        }
-
-        .tags { margin: 15px 0; }
-
-        .tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-green);
-            border: 1px solid var(--accent-green);
-            padding: 4px 10px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .btn-link {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: var(--accent-gold);
-            font-weight: bold;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
-
-        .music-section { border-left: 4px solid var(--accent-gold); }
-
-        footer {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            padding: 40px 0;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-        }
+        .file-link:hover { background: var(--accent-gold); }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas-bg"></canvas>
-
     <div class="container">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Regresar al Perfil</a>
         
         <header>
-            <img src="perfil.jpg" alt="Eduardo Olivares" class="profile-img">
-            
-            <h1>Eduardo Olivares</h1>
-            <div class="subtitle">Abogado | Ingeniero Financiero | Pianista</div>
-            
-            <nav>
-                <a href="#about">Bio</a>
-                <a href="#projects">Ingeniería & Legal Tech</a>
-                <a href="#music">Artes</a>
-                <a href="https://github.com/olivareseduardo38655-creador?tab=repositories" target="_blank">GitHub</a>
-            </nav>
+            <h1>Expediente de Credenciales</h1>
+            <p>Documentación técnica y certificaciones.</p>
         </header>
 
-        <section id="about">
-            <h2 style="text-align: center; margin-bottom: 30px;">Perfil Multidisciplinario</h2>
-            <p>
-                La incertidumbre es el enemigo común en los tribunales y en los mercados financieros. Mi carrera es una respuesta híbrida a ese desafío.
-            </p>
-            <p>
-                Como <strong>Abogado</strong>, desarrollé la lógica argumentativa y la gestión del riesgo normativo. Como <strong>Ingeniero Financiero</strong>, traduje esa lógica a algoritmos robustos en Java y Python. Y como <strong>Pianista</strong>, entiendo que la técnica impecable es el único camino hacia la ejecución perfecta.
-            </p>
-            <p>
-                Actualmente, construyo puentes entre la normativa bancaria (Compliance) y los modelos cuantitativos (Risk Modeling), asegurando que la innovación tecnológica cumpla con el rigor de la ley.
-            </p>
-        </section>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openFolder('a2')">📂 Certificados A2</button>
+            <button class="tab-btn" onclick="openFolder('anahuac')">🎓 Anáhuac</button>
+            <button class="tab-btn" onclick="openFolder('musica')">🎹 Música</button>
+        </div>
 
-        <section id="projects">
-            <h2>🔬 Catálogo de Proyectos</h2>
-            <div class="project-grid">
+        <div id="a2" class="folder-content active">
+            <h2><i class="fas fa-file-code"></i> Certificados A2 (Master Courses)</h2>
+            <p>Especialización técnica en herramientas de análisis y programación.</p>
+            <ul class="file-list">
                 
-                <div class="project-card">
-                    <h3>Motor de Pricing Black-Scholes</h3>
-                    <p>Valuación de derivados financieros. Implementación pura en Java con optimización de concurrencia para cálculo de 'Griegas'.</p>
-                    <div class="tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">Derivados</span>
-                        <span class="tag">Math</span>
-                    </div>
-                    <a href="https://github.com/olivareseduardo38655-creador" class="btn-link">Ver Código &rarr;</a>
-                </div>
+                <li class="file-item">
+                    <span class="file-name"><i class="far fa-file-pdf"></i> Excel Black Belt</span>
+                    <a href="assets/certificados_a2/excel.pdf" target="_blank" class="file-link">Ver PDF</a>
+                </li>
 
-                <div class="project-card">
-                    <h3>Data Governance & Compliance</h3>
-                    <p>Framework de auditoría automatizada para calidad de datos bancarios, alineado a normativas internacionales (BCBS 239).</p>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Legal Tech</span>
-                        <span class="tag">SQL</span>
-                    </div>
-                    <a href="https://github.com/olivareseduardo38655-creador/FinDataGov_Framework" class="btn-link">Ver Código &rarr;</a>
-                </div>
+                <li class="file-item">
+                    <span class="file-name"><i class="far fa-file-pdf"></i> Power BI Master</span>
+                    <a href="assets/certificados_a2/powerbi.pdf" target="_blank" class="file-link">Ver PDF</a>
+                </li>
+                
+                <li class="file-item">
+                    <span class="file-name"><i class="far fa-file-pdf"></i> SQL & Python</span>
+                    <a href="assets/certificados_a2/sql_python.pdf" target="_blank" class="file-link">Ver PDF</a>
+                </li>
 
-                <div class="project-card">
-                    <h3>Optimización Markowitz</h3>
-                    <p>Algoritmo de optimización de portafolios de inversión buscando la frontera eficiente mediante programación cuadrática.</p>
-                    <div class="tags">
-                        <span class="tag">R Studio</span>
-                        <span class="tag">Quant</span>
-                        <span class="tag">Estadística</span>
-                    </div>
-                    <a href="#" class="btn-link">Ver Código &rarr;</a>
-                </div>
+            </ul>
+        </div>
 
-            </div>
-        </section>
+        <div id="anahuac" class="folder-content">
+            <h2><i class="fas fa-university"></i> Certificaciones Anáhuac</h2>
+            <p>Diplomados universitarios y formación continua.</p>
+            <ul class="file-list">
+                
+                <li class="file-item">
+                    <span class="file-name"><i class="far fa-file-pdf"></i> Ciencia de Datos en Marketing</span>
+                    <a href="assets/anahuac/data_marketing.pdf" target="_blank" class="file-link">Ver PDF</a>
+                </li>
 
-        <section id="music" class="music-section">
-            <h2>🎹 Human & Arts</h2>
-            <p>
-                El código es lógico; la música es estructural. Como concertista de piano formado en el Instituto Fermatta, aplico la disciplina de la práctica deliberada a mi desarrollo profesional.
-            </p>
-            <p><em>"La estructura armónica de una sonata no es muy distinta a la arquitectura de un buen sistema de software: todo debe tener una razón de ser."</em></p>
-        </section>
+                <li class="file-item">
+                    <span class="file-name"><i class="far fa-file-pdf"></i> Análisis Financiero</span>
+                    <a href="assets/anahuac/analisis_financiero.pdf" target="_blank" class="file-link">Ver PDF</a>
+                </li>
 
-        <footer>
-            &copy; 2024 Eduardo Olivares. Designed with logic & aesthetics.
-        </footer>
+            </ul>
+        </div>
+
+        <div id="musica" class="folder-content">
+            <h2><i class="fas fa-music"></i> Trayectoria Musical</h2>
+            <p>Certificaciones del Instituto Fermatta y reconocimientos.</p>
+            <ul class="file-list">
+                
+                <li class="file-item">
+                    <span class="file-name"><i class="far fa-file-image"></i> Certificado Fermatta</span>
+                    <a href="assets/musica/fermatta.pdf" target="_blank" class="file-link">Ver Documento</a>
+                </li>
+
+                <li class="file-item">
+                    <span class="file-name"><i class="far fa-file-image"></i> Reconocimiento Piano</span>
+                    <a href="assets/musica/piano_rec.pdf" target="_blank" class="file-link">Ver Documento</a>
+                </li>
+
+            </ul>
+        </div>
+
     </div>
 
     <script>
-        const canvas = document.getElementById('canvas-bg');
-        const ctx = canvas.getContext('2d');
-        let particlesArray;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            init();
-        });
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = (Math.random() * 1.5 - 0.75);
-                this.speedY = (Math.random() * 1.5 - 0.75);
-                this.color = '#1B4D3E';
+        function openFolder(folderName) {
+            var i, content, tablinks;
+            content = document.getElementsByClassName("folder-content");
+            for (i = 0; i < content.length; i++) {
+                content[i].style.display = "none";
+                content[i].classList.remove("active");
             }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            document.getElementById(folderName).style.display = "block";
+            document.getElementById(folderName).classList.add("active");
+            event.currentTarget.className += " active";
         }
-
-        function init() {
-            particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            connect();
-        }
-
-        function connect() {
-            let opacityValue = 1;
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
-                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width/7) * (canvas.height/7)) {
-                        opacityValue = 1 - (distance/20000);
-                        ctx.strokeStyle = 'rgba(27, 77, 62,' + opacityValue + ')';
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-        init();
-        animate();
     </script>
 </body>
 </html>
