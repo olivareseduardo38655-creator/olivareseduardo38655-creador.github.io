@@ -31,17 +31,21 @@
 
         header { text-align: center; padding: 80px 0 50px; margin-bottom: 40px; }
         .profile-container { position: relative; display: inline-block; margin-bottom: 30px; }
+        
+        /* FOTO RESPONSIVA */
         .profile-img {
             width: 240px; height: 240px; object-fit: cover; border-radius: 50%;
             border: 5px solid var(--accent-gold); padding: 5px; background: white;
             box-shadow: var(--shadow-hover); transition: transform 0.4s;
+            max-width: 80vw; /* Evita que sea más grande que la pantalla del cel */
+            max-height: 80vw;
         }
         .profile-img:hover { transform: scale(1.02); border-color: var(--accent-green); }
 
         h1 { font-family: 'Playfair Display', serif; font-size: 3.8rem; margin: 0; color: var(--accent-green); letter-spacing: -1.5px; line-height: 1.1; }
         .subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-top: 15px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
 
-        nav { margin-top: 40px; display: flex; justify-content: center; gap: 30px; border-bottom: 1px solid rgba(207, 170, 110, 0.3); padding-bottom: 20px; }
+        nav { margin-top: 40px; display: flex; justify-content: center; gap: 30px; border-bottom: 1px solid rgba(207, 170, 110, 0.3); padding-bottom: 20px; flex-wrap: wrap;}
         nav a { text-decoration: none; color: var(--text-primary); font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
         nav a:hover { color: var(--accent-gold); }
 
@@ -63,6 +67,15 @@
         .btn-code:hover { color: var(--accent-green); }
 
         footer { text-align: center; padding: 40px; color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* --- 📱 REGLAS PARA CELULARES (MEDIA QUERY) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; } /* Letra más chica */
+            .subtitle { font-size: 0.9rem; letter-spacing: 1px; }
+            section { padding: 30px 20px; } /* Menos relleno en cajas */
+            nav { gap: 15px; flex-direction: column; } /* Menú vertical */
+            .profile-img { width: 180px; height: 180px; }
+        }
     </style>
 </head>
 <body>
@@ -75,7 +88,7 @@
                 <img src="perfil.jpg" alt="Eduardo Olivares" class="profile-img">
             </div>
             <h1>Eduardo Olivares</h1>
-            <div class="subtitle">Abogado | Ingeniero Financiero - Quantitative Developer | Pianista</div>
+            <div class="subtitle">Abogado | Quantitative Developer | Pianista</div>
             <nav>
                 <a href="#about">Bio</a>
                 <a href="#projects">Catálogo de Proyectos</a>
