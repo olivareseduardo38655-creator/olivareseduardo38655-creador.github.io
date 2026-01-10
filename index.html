@@ -3,224 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduardo Olivares | Quant Developer & Legal Tech</title>
+    <title>Eduardo Olivares | Quant & Law</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
-        /* ESTILO GENERAL - Minimalista tipo Yan Holtz */
+        /* PALETA DE COLORES: Verde Inglés, Dorado Viejo y Crema */
         :root {
-            --bg-color: #f8f9fa;
-            --text-color: #2c3e50;
-            --accent-color: #004481; /* Azul corporativo tipo BBVA */
-            --secondary-color: #6c757d;
+            --bg-color: #f4f1ea; /* Crema papel antiguo */
+            --text-primary: #1a2e22; /* Verde muy oscuro (casi negro) */
+            --text-secondary: #4a5d50;
+            --accent-green: #1B4D3E; /* Verde Inglés / Racing Green */
+            --accent-gold: #C5A059; /* Dorado viejo para detalles */
+            --card-bg: rgba(255, 255, 255, 0.9); /* Blanco con transparencia */
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif; /* Cuerpo moderno */
+            line-height: 1.8;
+            color: var(--text-primary);
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
-        /* CONTENEDOR CENTRAL */
+        /* FONDO DINÁMICO (CANVAS) */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Se queda atrás de todo */
+            opacity: 0.4; /* Sutil para no distraer */
+        }
+
+        /* TIPOGRAFÍA */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif; /* Títulos elegantes */
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        /* LAYOUT */
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            position: relative; /* Para estar sobre el canvas */
         }
 
-        /* HEADER / ENCABEZADO */
+        /* HEADER */
         header {
             text-align: center;
-            padding: 60px 20px;
-            border-bottom: 1px solid #ddd;
+            padding: 80px 0 40px;
+            border-bottom: 2px solid var(--accent-gold);
+            margin-bottom: 40px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--accent-color);
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: -1px;
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            font-weight: 300;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        /* NAVEGACIÓN TIPO PESTAÑAS */
+        /* NAVEGACIÓN */
         nav {
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            margin-top: 30px;
-            gap: 20px;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-color);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            padding-bottom: 5px;
+            color: var(--text-primary);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: width 0.3s;
         }
 
         nav a:hover {
-            border-bottom: 2px solid var(--accent-color);
-            color: var(--accent-color);
+            color: var(--accent-gold);
         }
 
-        /* SECCIÓN ABOUT ME */
-        .about-section {
-            background: white;
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* SECCIONES */
+        section {
+            background: var(--card-bg);
             padding: 40px;
-            margin-top: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-radius: 4px; /* Bordes poco redondeados, más serio */
+            border: 1px solid rgba(27, 77, 62, 0.1);
+            backdrop-filter: blur(5px); /* Efecto vidrio esmerilado */
+            box-shadow: 0 4px 20px rgba(27, 77, 62, 0.05);
         }
 
-        h2 {
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-            margin-top: 40px;
+        .about-text p {
+            font-size: 1.05rem;
+            text-align: justify;
         }
 
-        /* GRID DE PROYECTOS (ESTILO GALERÍA) */
+        /* PROYECTOS */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .project-card {
-            background: white;
-            padding: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-            transition: transform 0.2s;
+            background: #fff;
+            padding: 25px;
+            border-top: 3px solid var(--accent-green);
+            transition: all 0.3s ease;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .tags {
+            margin: 15px 0;
         }
 
         .tag {
             display: inline-block;
-            background: #e9ecef;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            padding: 4px 10px;
             margin-right: 5px;
             margin-bottom: 5px;
-            color: var(--accent-color);
+            font-weight: 600;
         }
 
-        /* SECCIÓN MÚSICA */
+        .btn-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .btn-link:hover {
+            color: var(--accent-green);
+        }
+
+        /* MÚSICA */
         .music-section {
-            background: #fff;
-            padding: 30px;
-            margin-top: 30px;
-            border-left: 5px solid #d4af37; /* Dorado para música */
+            border-left: 4px solid var(--accent-gold);
         }
 
         /* FOOTER */
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            color: var(--secondary-color);
             font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 40px 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
 
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
 
+    <canvas id="canvas-bg"></canvas>
+
     <div class="container">
+        
         <header>
             <h1>Eduardo Olivares</h1>
-            <div class="subtitle">Abogado | Ingeniero Financiero | Quantitative Developer</div>
+            <div class="subtitle">Abogado | Ingeniero Financiero | Pianista</div>
             
             <nav>
-                <a href="#about">Perfil</a>
-                <a href="#projects">Portafolio</a>
-                <a href="#music">Human & Arts</a>
-                <a href="https://github.com/olivareseduardo38655-creador?tab=repositories" target="_blank">GitHub Completo</a>
+                <a href="#about">Bio</a>
+                <a href="#projects">Ingeniería & Legal Tech</a>
+                <a href="#music">Artes</a>
+                <a href="https://github.com/olivareseduardo38655-creador?tab=repositories" target="_blank">GitHub</a>
             </nav>
         </header>
 
-        <section id="about" class="about-section">
+        <section id="about" class="about-text">
+            <h2 style="text-align: center; margin-bottom: 30px;">Perfil Multidisciplinario</h2>
             <p>
-                Soy un <strong>Desarrollador Cuantitativo y Abogado</strong>, con una trayectoria híbrida diseñada para reducir la incertidumbre en entornos financieros regulados.
+                La incertidumbre es el enemigo común en los tribunales y en los mercados financieros. Mi carrera es una respuesta híbrida a ese desafío.
             </p>
             <p>
-                Mi carrera comenzó en los tribunales, litigando en áreas Mercantiles y Civiles, donde aprendí que un argumento sólido requiere lógica impecable. Esa pasión por la lógica me llevó a la <strong>Ingeniería Financiera</strong>, cambiando los códigos legales por algoritmos en <strong>Java y Python</strong>.
+                Como <strong>Abogado</strong>, desarrollé la lógica argumentativa y la gestión del riesgo normativo. Como <strong>Ingeniero Financiero</strong>, traduje esa lógica a algoritmos robustos en Java y Python. Y como <strong>Pianista</strong>, entiendo que la técnica impecable es el único camino hacia la ejecución perfecta.
             </p>
             <p>
-                Actualmente, busco integrarme al sector bancario (Tech/Riesgos) para aportar una visión única: la capacidad de entender la <strong>normativa</strong> (compliance) y construir los <strong>modelos matemáticos</strong> robustos que la sustentan.
+                Actualmente, construyo puentes entre la normativa bancaria (Compliance) y los modelos cuantitativos (Risk Modeling), asegurando que la innovación tecnológica cumpla con el rigor de la ley.
             </p>
         </section>
 
-        <h2>🔬 Proyectos Flagship</h2>
-        <div id="projects" class="project-grid">
-            
-            <div class="project-card">
-                <h3>Pricing Black-Scholes</h3>
-                <p>Motor de valuación de opciones europeas implementado desde cero con soporte multihilo.</p>
-                <div>
-                    <span class="tag">Java</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Finanzas</span>
+        <section id="projects">
+            <h2>🔬 Catálogo de Proyectos</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <h3>Motor de Pricing Black-Scholes</h3>
+                    <p>Valuación de derivados financieros. Implementación pura en Java con optimización de concurrencia para cálculo de 'Griegas'.</p>
+                    <div class="tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Derivados</span>
+                        <span class="tag">Math</span>
+                    </div>
+                    <a href="https://github.com/olivareseduardo38655-creador" class="btn-link">Ver Código &rarr;</a>
                 </div>
-                <a href="https://github.com/olivareseduardo38655-creador" class="btn">Ver Código →</a>
-            </div>
 
-            <div class="project-card">
-                <h3>Data Governance Framework</h3>
-                <p>Sistema de auditoría y calidad de datos diseñado bajo normativa bancaria.</p>
-                <div>
-                    <span class="tag">Python</span>
-                    <span class="tag">Compliance</span>
-                    <span class="tag">Data Quality</span>
+                <div class="project-card">
+                    <h3>Data Governance & Compliance</h3>
+                    <p>Framework de auditoría automatizada para calidad de datos bancarios, alineado a normativas internacionales (BCBS 239).</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Legal Tech</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                    <a href="https://github.com/olivareseduardo38655-creador/FinDataGov_Framework" class="btn-link">Ver Código &rarr;</a>
                 </div>
-                <a href="https://github.com/olivareseduardo38655-creador/FinDataGov_Framework" class="btn">Ver Código →</a>
-            </div>
 
-            <div class="project-card">
-                <h3>Optimización de Portafolios</h3>
-                <p>Algoritmos de optimización convexa para asignación de activos financieros.</p>
-                <div>
-                    <span class="tag">R Studio</span>
-                    <span class="tag">Math</span>
-                    <span class="tag">Markowitz</span>
+                <div class="project-card">
+                    <h3>Optimización Markowitz</h3>
+                    <p>Algoritmo de optimización de portafolios de inversión buscando la frontera eficiente mediante programación cuadrática.</p>
+                    <div class="tags">
+                        <span class="tag">R Studio</span>
+                        <span class="tag">Quant</span>
+                        <span class="tag">Estadística</span>
+                    </div>
+                    <a href="#" class="btn-link">Ver Código &rarr;</a>
                 </div>
-                <a href="#" class="btn">Ver Código →</a>
-            </div>
-        </div>
 
-        <h2 style="border-color: #d4af37;">🎹 Beyond Code: Música & Disciplina</h2>
-        <div id="music" class="music-section">
+            </div>
+        </section>
+
+        <section id="music" class="music-section">
+            <h2>🎹 Human & Arts</h2>
             <p>
-                Como pianista concertista, entiendo que la excelencia técnica requiere iteración y disciplina. 
-                La música es mi entrenamiento diario en precisión y abstracción matemática.
+                El código es lógico; la música es estructural. Como concertista de piano formado en el Instituto Fermatta, aplico la disciplina de la práctica deliberada a mi desarrollo profesional.
             </p>
-            <p><em>"La creatividad artística y el rigor científico son complementarios."</em></p>
-            </div>
+            <p><em>"La estructura armónica de una sonata no es muy distinta a la arquitectura de un buen sistema de software: todo debe tener una razón de ser."</em></p>
+        </section>
 
         <footer>
-            <p>© 2024 Eduardo Olivares. Construido con GitHub Pages.</p>
+            &copy; 2024 Eduardo Olivares. Designed with logic & aesthetics.
         </footer>
     </div>
 
+    <script>
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particlesArray;
+
+        // Ajustar tamaño del canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        // Clase Partícula
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1; // Puntos pequeños
+                this.speedX = (Math.random() * 1.5 - 0.75); // Lento
+                this.speedY = (Math.random() * 1.5 - 0.75);
+                this.color = '#1B4D3E'; // Verde Inglés
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Rebotar en bordes
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000; // Densidad
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connect();
+        }
+
+        // Conectar puntos con líneas (Efecto Red Neuronal/Correlación)
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + 
+                                   ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        opacityValue = 1 - (distance/20000);
+                        ctx.strokeStyle = 'rgba(27, 77, 62,' + opacityValue + ')'; // Líneas verdes tenues
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        init();
+        animate();
+    </script>
 </body>
 </html>
