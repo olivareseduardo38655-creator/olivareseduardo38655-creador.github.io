@@ -8,100 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- ESTILOS DE IDENTIDAD --- */
-        :root {
-            --bg-color: #f0f2f5;
-            --accent-green: #0f3d2e;
-            --accent-gold: #cfaa6e;
-            --text-primary: #1a2e22;
-        }
+        :root { --bg-color: #f0f2f5; --accent-green: #0f3d2e; --accent-gold: #cfaa6e; --text-primary: #1a2e22; }
         body { font-family: 'Montserrat', sans-serif; background: var(--bg-color); color: var(--text-primary); margin: 0; }
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* HEADER */
         header { text-align: center; margin-bottom: 40px; }
         h1 { font-family: 'Playfair Display', serif; color: var(--accent-green); font-size: 2.5rem; margin-bottom: 5px;}
-        
-        .back-btn {
-            display: inline-block; text-decoration: none; color: var(--text-primary);
-            margin-bottom: 20px; font-weight: 600; transition: color 0.3s;
-            border: 1px solid var(--accent-green); padding: 5px 15px; border-radius: 20px;
-        }
+        .back-btn { display: inline-block; text-decoration: none; color: var(--text-primary); margin-bottom: 20px; font-weight: 600; transition: color 0.3s; border: 1px solid var(--accent-green); padding: 5px 15px; border-radius: 20px; }
         .back-btn:hover { background: var(--accent-green); color: white; }
-
-        /* PESTAÑAS (TABS) */
         .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-        
-        .tab-btn {
-            background: #e0e0e0;
-            border: none;
-            padding: 12px 25px;
-            cursor: pointer;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1rem;
-            border-radius: 8px 8px 0 0;
-            color: #666;
-            transition: all 0.3s;
-        }
-        .tab-btn.active {
-            background: white;
-            color: var(--accent-green);
-            border-top: 4px solid var(--accent-gold);
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
-        }
-
-        /* CONTENIDO DE CARPETAS */
-        .folder-content {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: none;
-            animation: fadeIn 0.5s;
-        }
+        .tab-btn { background: #e0e0e0; border: none; padding: 12px 25px; cursor: pointer; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; border-radius: 8px 8px 0 0; color: #666; transition: all 0.3s; }
+        .tab-btn.active { background: white; color: var(--accent-green); border-top: 4px solid var(--accent-gold); box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
+        .folder-content { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none; animation: fadeIn 0.5s; }
         .folder-content.active { display: block; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* GRID DE CERTIFICADOS */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 15px;
-        }
-
-        .file-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px; border: 1px solid #eee; border-radius: 6px; 
-            transition: all 0.2s; background: #fff;
-        }
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px; }
+        .file-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid #eee; border-radius: 6px; transition: all 0.2s; background: #fff; }
         .file-item:hover { transform: translateY(-3px); border-color: var(--accent-gold); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        
         .file-info { display: flex; align-items: center; gap: 10px; overflow: hidden;}
         .file-name { font-weight: 500; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;}
         .fa-file-pdf { color: #d32f2f; }
-        
-        .file-link {
-            text-decoration: none; color: var(--accent-green);
-            font-size: 0.8rem; font-weight: 700; border: 1px solid var(--accent-green);
-            padding: 4px 10px; border-radius: 4px; flex-shrink: 0;
-        }
+        .file-link { text-decoration: none; color: var(--accent-green); font-size: 0.8rem; font-weight: 700; border: 1px solid var(--accent-green); padding: 4px 10px; border-radius: 4px; flex-shrink: 0; }
         .file-link:hover { background: var(--accent-green); color: white; }
-
-        /* GALERÍA DE FOTOS */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        .gallery-img {
-            width: 100%; height: 200px; object-fit: cover;
-            border-radius: 6px; transition: transform 0.3s;
-            cursor: pointer; border: 3px solid transparent;
-        }
+        .photo-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; transition: transform 0.3s; cursor: pointer; border: 3px solid transparent; }
         .gallery-img:hover { transform: scale(1.05); border-color: var(--accent-gold); }
-
     </style>
 </head>
 <body>
@@ -123,134 +53,56 @@
         <div id="tech" class="folder-content active">
             <h2><i class="fas fa-code"></i> Especialización Técnica</h2>
             <p style="margin-bottom: 20px;">Colección de certificaciones en Data Science, Programación y Analítica.</p>
-            
             <div class="cert-grid">
-                
-                <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Álgebra Lineal</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-algebra-lineal.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Bases de Datos (Access)</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-base-de-datos-con-acces.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Dashboards</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-dashboards.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Deep Learning</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-deep-learning.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Design Thinking</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-design-thinking.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Estadística Descriptiva</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-estadisitca-descriptiva.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Estadística con R</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-estadistica-con-r.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Estadística Inferencial</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-estadistica-inferencial.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Finanzas</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-finanzas.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Fórmulas Matriciales</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-formulas-matriciales.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">GitHub</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-github.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Inteligencia Artificial</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-inteligencia-artificial.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Machine Learning</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-machine-learning.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Matplotlib</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-matplotlib.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Pandas Data Science</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-pandas-para-ciencia-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Probabilidad</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-probabilidad.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Python Data Science</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-python-para-ciencia-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">R y R Studio</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-r-y-r-studio-desde-cero-hasta-datamaster.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Seaborn Gráficas</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-seaborn-graficas-increibles.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">SQL de Cero a Experto</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-sql-desde-cero-a-experto.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">SQL para Análisis</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-sql-para-analisis-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Tableau</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-tableau-para-visualizacion-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                 <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Visualización con R</span></div>
-                    <a href="assets/certificados_a1/certificate-of-completion-for-visualizacion-de-datos-con-r-studio.pdf" target="_blank" class="file-link">Ver PDF</a>
-                </div>
-                
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Álgebra Lineal</span></div><a href="assets/certificados_a1/certificate-of-completion-for-algebra-lineal.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Bases de Datos (Access)</span></div><a href="assets/certificados_a1/certificate-of-completion-for-base-de-datos-con-acces.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Dashboards</span></div><a href="assets/certificados_a1/certificate-of-completion-for-dashboards.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Deep Learning</span></div><a href="assets/certificados_a1/certificate-of-completion-for-deep-learning.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Design Thinking</span></div><a href="assets/certificados_a1/certificate-of-completion-for-design-thinking.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Estadística Descriptiva</span></div><a href="assets/certificados_a1/certificate-of-completion-for-estadisitca-descriptiva.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Estadística con R</span></div><a href="assets/certificados_a1/certificate-of-completion-for-estadistica-con-r.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Estadística Inferencial</span></div><a href="assets/certificados_a1/certificate-of-completion-for-estadistica-inferencial.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Finanzas</span></div><a href="assets/certificados_a1/certificate-of-completion-for-finanzas.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Fórmulas Matriciales</span></div><a href="assets/certificados_a1/certificate-of-completion-for-formulas-matriciales.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">GitHub</span></div><a href="assets/certificados_a1/certificate-of-completion-for-github.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Inteligencia Artificial</span></div><a href="assets/certificados_a1/certificate-of-completion-for-inteligencia-artificial.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Machine Learning</span></div><a href="assets/certificados_a1/certificate-of-completion-for-machine-learning.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Matplotlib</span></div><a href="assets/certificados_a1/certificate-of-completion-for-matplotlib.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Pandas Data Science</span></div><a href="assets/certificados_a1/certificate-of-completion-for-pandas-para-ciencia-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Probabilidad</span></div><a href="assets/certificados_a1/certificate-of-completion-for-probabilidad.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Python Data Science</span></div><a href="assets/certificados_a1/certificate-of-completion-for-python-para-ciencia-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">R y R Studio</span></div><a href="assets/certificados_a1/certificate-of-completion-for-r-y-r-studio-desde-cero-hasta-datamaster.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Seaborn Gráficas</span></div><a href="assets/certificados_a1/certificate-of-completion-for-seaborn-graficas-increibles.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">SQL de Cero a Experto</span></div><a href="assets/certificados_a1/certificate-of-completion-for-sql-desde-cero-a-experto.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">SQL para Análisis</span></div><a href="assets/certificados_a1/certificate-of-completion-for-sql-para-analisis-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Tableau</span></div><a href="assets/certificados_a1/certificate-of-completion-for-tableau-para-visualizacion-de-datos.pdf" target="_blank" class="file-link">Ver PDF</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Visualización con R</span></div><a href="assets/certificados_a1/certificate-of-completion-for-visualizacion-de-datos-con-r-studio.pdf" target="_blank" class="file-link">Ver PDF</a></div>
             </div>
         </div>
 
         <div id="anahuac" class="folder-content">
             <h2><i class="fas fa-university"></i> Certificaciones Universitarias</h2>
             <p>Formación continua avalada por la Universidad Anáhuac.</p>
-            
             <div class="cert-grid">
-                <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Data Science & MKT</span></div>
-                    <a href="assets/anahuac/AnahuacX%20UAMY.MO.2x%20Certificate%20_%20edX.pdf" target="_blank" class="file-link">Ver Diploma</a>
-                </div>
-
-                <div class="file-item">
-                    <div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Análisis Financiero</span></div>
-                    <a href="assets/anahuac/AnahuacX%20UVA-MM1x%20Certificate%20_%20edX.pdf" target="_blank" class="file-link">Ver Diploma</a>
-                </div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Data Science & MKT</span></div><a href="assets/anahuac/AnahuacX%20UAMY.MO.2x%20Certificate%20_%20edX.pdf" target="_blank" class="file-link">Ver Diploma</a></div>
+                <div class="file-item"><div class="file-info"><i class="far fa-file-pdf"></i> <span class="file-name">Análisis Financiero</span></div><a href="assets/anahuac/AnahuacX%20UVA-MM1x%20Certificate%20_%20edX.pdf" target="_blank" class="file-link">Ver Diploma</a></div>
             </div>
         </div>
 
         <div id="musica" class="folder-content">
             <h2><i class="fas fa-music"></i> El Lado Humano: Trayectoria Artística</h2>
-            <p style="margin-bottom: 20px;">
-                "La música estructura la mente para el pensamiento abstracto."
-            </p>
-            
+            <p style="margin-bottom: 20px;">"La música estructura la mente para el pensamiento abstracto."</p>
             <div class="photo-gallery">
                 <img src="assets/musica/2.jpeg" alt="Eduardo Piano" class="gallery-img">
                 <img src="assets/musica/3.jpeg" alt="Concierto" class="gallery-img">
                 <img src="assets/musica/4.jpeg" alt="Arte" class="gallery-img">
                 <img src="assets/musica/5.jpeg" alt="Piano" class="gallery-img">
                 <img src="assets/musica/6.jpeg" alt="Evento" class="gallery-img">
+                
+                <img src="assets/musica/7.jpeg" alt="Nueva Foto 7" class="gallery-img">
+                <img src="assets/musica/8.jpeg" alt="Nueva Foto 8" class="gallery-img">
+                <img src="assets/musica/9.jpeg" alt="Nueva Foto 9" class="gallery-img">
+                <img src="assets/musica/10.jpeg" alt="Nueva Foto 10" class="gallery-img">
             </div>
         </div>
 
@@ -260,14 +112,9 @@
         function openFolder(folderName) {
             var i, content, tablinks;
             content = document.getElementsByClassName("folder-content");
-            for (i = 0; i < content.length; i++) {
-                content[i].style.display = "none";
-                content[i].classList.remove("active");
-            }
+            for (i = 0; i < content.length; i++) { content[i].style.display = "none"; content[i].classList.remove("active"); }
             tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
             document.getElementById(folderName).style.display = "block";
             document.getElementById(folderName).classList.add("active");
             event.currentTarget.className += " active";
