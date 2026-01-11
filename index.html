@@ -53,6 +53,16 @@
         nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--accent-gold); transition: width .3s; }
         nav a:hover::after { width: 100%; }
 
+        /* --- BOTÓN DESCARGA CV --- */
+        .cv-download-btn {
+            display: inline-block; margin-top: 25px;
+            background-color: var(--accent-green); color: white; padding: 12px 25px; 
+            text-decoration: none; border-radius: 30px; font-weight: 600; 
+            font-family: 'Montserrat', sans-serif; font-size: 0.9rem; 
+            box-shadow: 0 4px 15px rgba(15, 61, 46, 0.3); transition: transform 0.3s, background 0.3s;
+        }
+        .cv-download-btn:hover { transform: translateY(-3px); background-color: #0a291f; }
+
         /* --- SECCIONES --- */
         section { background: var(--paper-color); padding: 50px; margin-bottom: 40px; border-radius: 12px; border-top: 5px solid var(--accent-gold); box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
         
@@ -81,8 +91,6 @@
             position: relative; overflow: hidden;
         }
         .project-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--accent-gold); }
-        
-        /* Pequeña barra lateral de color según categoría (opcional, decorativo) */
         .project-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent-green); opacity: 0; transition: opacity 0.3s;}
         .project-card:hover::before { opacity: 1; }
 
@@ -91,7 +99,7 @@
             color: var(--text-primary); line-height: 1.3;
         }
         
-        .card-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; flex-grow: 1; }
+        .card-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; flex-grow: 1; text-align: justify; }
         
         .tags { margin-top: auto; padding-top: 15px; border-top: 1px solid #f0f0f0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;}
         .tag { 
@@ -127,15 +135,22 @@
             <div class="profile-container">
                 <img src="perfil.jpg" alt="Eduardo Olivares" class="profile-img">
             </div>
+            
             <h1>Eduardo Olivares</h1>
             <div class="subtitle">Abogado | Quantitative Developer | Pianista</div>
             
             <nav>
                 <a href="#about">Bio</a>
-                <a href="#projects">Catálogo Técnico (30)</a>
+                <a href="#projects">Catálogo Técnico</a>
                 <a href="credenciales.html">Credenciales</a>
-                <a href="https://github.com/olivareseduardo38655-creador" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://github.com/olivareseduardo38655-creator" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
             </nav>
+
+            <a href="assets/cv/cv_eduardo.pdf" download="CV_Eduardo_Olivares_Quant.pdf" class="cv-download-btn">
+                <i class="fas fa-file-download"></i> Descargar CV (PDF)
+            </a>
         </header>
 
         <section id="about">
@@ -155,8 +170,8 @@
 
         <section id="projects">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
-                <h2><i class="fas fa-layer-group"></i> Catálogo Técnico</h2>
-                <a href="https://github.com/olivareseduardo38655-creador" target="_blank" style="background: var(--text-primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 0.9rem;">
+                <h2><i class="fas fa-layer-group"></i> Catálogo Técnico (30 Proyectos)</h2>
+                <a href="https://github.com/olivareseduardo38655-creator?tab=repositories" target="_blank" style="background: var(--text-primary); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 0.9rem;">
                     <i class="fab fa-github"></i> Ver Todos los Repositorios
                 </a>
             </div>
@@ -174,189 +189,189 @@
             <div class="project-grid">
 
                 <div class="project-card" data-category="data">
-                    <h3>EDA Multifuente</h3>
-                    <p class="card-desc">Análisis Exploratorio de Datos integrando múltiples fuentes (SQL, CSV, API) para detección de patrones latentes.</p>
+                    <h3>EDA Multifuente Avanzado</h3>
+                    <p class="card-desc">Pipeline de ingesta y limpieza de datos estructurados y no estructurados provenientes de APIs y SQL, optimizando la detección de outliers para modelado.</p>
                     <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="data">
-                    <h3>Clasificación Supervisada</h3>
-                    <p class="card-desc">Desarrollo de modelos predictivos con evaluación estadística rigurosa (ROC, AUC, Matriz de Confusión).</p>
+                    <h3>Clasificación Supervisada (ROC/AUC)</h3>
+                    <p class="card-desc">Implementación de algoritmos (SVM, Random Forest) con validación cruzada y evaluación rigurosa mediante matrices de confusión y curvas ROC.</p>
                     <div class="tags"><span class="tag">Scikit-Learn</span><span class="tag">ML</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="data">
                     <h3>Pipeline Feature Engineering</h3>
-                    <p class="card-desc">Limpieza automatizada y transformación de variables para optimizar el rendimiento de modelos en producción.</p>
+                    <p class="card-desc">Automatización de la transformación de variables (One-Hot Encoding, Scaling) para optimizar la convergencia de modelos predictivos en producción.</p>
                     <div class="tags"><span class="tag">Python</span><span class="tag">ETL</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="data">
-                    <h3>Regresión Financiera</h3>
-                    <p class="card-desc">Modelos de regresión lineal y regularizada (Lasso/Ridge) aplicados a predicción de activos financieros.</p>
+                    <h3>Regresión Financiera Regularizada</h3>
+                    <p class="card-desc">Modelado predictivo de precios de activos utilizando regresiones Lasso y Ridge para mitigar el sobreajuste en datasets con alta colinealidad.</p>
                     <div class="tags"><span class="tag">Statsmodels</span><span class="tag">Finance</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="data">
-                    <h3>Segmentación Clustering</h3>
-                    <p class="card-desc">Algoritmos no supervisados (K-Means) para segmentación de clientes basada en comportamiento transaccional.</p>
-                    <div class="tags"><span class="tag">Python</span><span class="tag">Clustering</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Segmentación de Clientes (K-Means)</h3>
+                    <p class="card-desc">Aplicación de algoritmos de clustering no supervisado para identificar perfiles transaccionales y optimizar estrategias de marketing dirigido.</p>
+                    <div class="tags"><span class="tag">Clustering</span><span class="tag">Unsupervised</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="data">
-                    <h3>KPIs de Negocio</h3>
-                    <p class="card-desc">Definición y cálculo programático de métricas clave de rendimiento orientadas a la estrategia corporativa.</p>
+                    <h3>Métricas de Negocio KPI</h3>
+                    <p class="card-desc">Cálculo programático de indicadores clave (CAC, LTV) transformando datos crudos en insights accionables para la dirección.</p>
                     <div class="tags"><span class="tag">Analytics</span><span class="tag">Business</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="data">
-                    <h3>Forecasting Básico</h3>
-                    <p class="card-desc">Introducción al análisis de series temporales para proyección de demanda y ventas.</p>
-                    <div class="tags"><span class="tag">Python</span><span class="tag">Time Series</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Forecasting Series Temporales</h3>
+                    <p class="card-desc">Desarrollo de modelos base para la proyección de demanda y ventas estacionales utilizando técnicas de suavizado exponencial.</p>
+                    <div class="tags"><span class="tag">Time Series</span><span class="tag">Python</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
-                <div class="project-card" data-category="data math">
-                    <h3>Series Temporales R</h3>
-                    <p class="card-desc">Modelado avanzado ARIMA y GARCH en R para series financieras con alta volatilidad.</p>
-                    <div class="tags"><span class="tag">R Studio</span><span class="tag">Econometría</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                <div class="project-card" data-category="math">
+                    <h3>Econometría Avanzada en R</h3>
+                    <p class="card-desc">Análisis de series financieras con volatilidad condicional (modelos GARCH) y pruebas de estacionariedad (Dickey-Fuller) en R.</p>
+                    <div class="tags"><span class="tag">R Studio</span><span class="tag">Econometrics</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
-                <div class="project-card" data-category="data math">
-                    <h3>Inferencia Estadística R</h3>
-                    <p class="card-desc">Contrastes de hipótesis, intervalos de confianza y análisis ANOVA para validación de datos experimentales.</p>
+                <div class="project-card" data-category="math">
+                    <h3>Inferencia Estadística y ANOVA</h3>
+                    <p class="card-desc">Ejecución de contrastes de hipótesis paramétricos y no paramétricos para validación de resultados experimentales A/B testing.</p>
                     <div class="tags"><span class="tag">R Lang</span><span class="tag">Statistics</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
-                <div class="project-card" data-category="data bi">
-                    <h3>Dashboard Power BI</h3>
-                    <p class="card-desc">Diseño de tableros interactivos conectando múltiples fuentes de datos para soporte a decisiones gerenciales.</p>
+                <div class="project-card" data-category="bi">
+                    <h3>Dashboard Decisional Power BI</h3>
+                    <p class="card-desc">Arquitectura de Business Intelligence conectada a DW para monitoreo en tiempo real de la salud operativa de la empresa.</p>
                     <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
 
                 <div class="project-card" data-category="bi">
-                    <h3>Churn Predictivo</h3>
-                    <p class="card-desc">Dashboard integrado con script de Python para predecir fuga de clientes y visualizar factores de riesgo (XAI).</p>
-                    <div class="tags"><span class="tag">Power BI</span><span class="tag">Python</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Churn Prediction & XAI</h3>
+                    <p class="card-desc">Integración Python-Power BI para predecir fuga de clientes, visualizando la explicabilidad del modelo (SHAP values) para usuarios de negocio.</p>
+                    <div class="tags"><span class="tag">XAI</span><span class="tag">Python</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="bi">
                     <h3>Analítica Prescriptiva</h3>
-                    <p class="card-desc">Sistema de recomendación de acciones automatizadas para mejorar la retención de clientes basada en datos.</p>
-                    <div class="tags"><span class="tag">Strategy</span><span class="tag">Analytics</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <p class="card-desc">Sistema de recomendación que no solo predice riesgos, sino que sugiere acciones automatizadas para maximizar la retención.</p>
+                    <div class="tags"><span class="tag">Strategy</span><span class="tag">Optimization</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="bi">
-                    <h3>ML en Power BI</h3>
-                    <p class="card-desc">Integración nativa de modelos de Machine Learning dentro del flujo de trabajo de Power BI Service.</p>
-                    <div class="tags"><span class="tag">AutoML</span><span class="tag">BI</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>ML Integration en BI</h3>
+                    <p class="card-desc">Implementación de modelos de Machine Learning nativos dentro del flujo de datos de Power BI Service (AutoML).</p>
+                    <div class="tags"><span class="tag">AutoML</span><span class="tag">Cloud</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="bi">
-                    <h3>Visual Analytics Riesgo</h3>
-                    <p class="card-desc">Reportes ejecutivos de alto nivel enfocados en métricas de riesgo financiero y cumplimiento de KPIs.</p>
-                    <div class="tags"><span class="tag">Reporting</span><span class="tag">Finance</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Visual Analytics de Riesgo</h3>
+                    <p class="card-desc">Tableros de control ejecutivos diseñados para la vigilancia de exposición al riesgo de mercado y crédito.</p>
+                    <div class="tags"><span class="tag">Risk Mgt</span><span class="tag">Reporting</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="bi">
-                    <h3>Pipeline End-to-End</h3>
-                    <p class="card-desc">Arquitectura completa desde la extracción de datos crudos hasta la visualización final en el corporativo.</p>
-                    <div class="tags"><span class="tag">ETL</span><span class="tag">Architecture</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Pipeline End-to-End Corporativo</h3>
+                    <p class="card-desc">Orquestación completa del flujo de datos: extracción ETL, modelado en estrella y visualización front-end.</p>
+                    <div class="tags"><span class="tag">Architecture</span><span class="tag">Data Warehousing</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
 
                 <div class="project-card" data-category="math quant">
-                    <h3>Optimización Convexa</h3>
-                    <p class="card-desc">Resolución de problemas de optimización de portafolios (Markowitz) utilizando librerías científicas.</p>
+                    <h3>Optimización Convexa de Portafolios</h3>
+                    <p class="card-desc">Minimización de varianza y maximización de Sharpe Ratio utilizando solucionadores cuadráticos en Python (cvxpy/SciPy).</p>
                     <div class="tags"><span class="tag">Python</span><span class="tag">SciPy</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="math java">
-                    <h3>Métodos Numéricos</h3>
-                    <p class="card-desc">Implementación desde cero (sin librerías) de algoritmos de raíces (Newton-Raphson) y álgebra lineal en Java.</p>
-                    <div class="tags"><span class="tag">Java</span><span class="tag">Algoritmos</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Implementación Métodos Numéricos</h3>
+                    <p class="card-desc">Desarrollo desde cero de algoritmos de Newton-Raphson y descomposición de matrices LU sin librerías externas.</p>
+                    <div class="tags"><span class="tag">Java</span><span class="tag">Algorithms</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="math">
-                    <h3>Sistemas Dinámicos</h3>
-                    <p class="card-desc">Simulación computacional de teoría del caos y modelos no lineales aplicados a economía.</p>
-                    <div class="tags"><span class="tag">Simulation</span><span class="tag">Math</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Simulación de Caos y Sistemas Dinámicos</h3>
+                    <p class="card-desc">Modelado computacional de ecuaciones diferenciales no lineales para estudiar sensibilidad a condiciones iniciales en mercados.</p>
+                    <div class="tags"><span class="tag">Simulation</span><span class="tag">Chaos Theory</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
 
                 <div class="project-card" data-category="gov">
-                    <h3>Data Quality Framework</h3>
-                    <p class="card-desc">Desarrollo de un marco de trabajo para validar completitud, unicidad y consistencia de datos (Data Quality Dimensions).</p>
-                    <div class="tags"><span class="tag">Python</span><span class="tag">DQ</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Data Quality & Governance Framework</h3>
+                    <p class="card-desc">Framework integral para validación de dimensiones de calidad (completitud, unicidad) asegurando la integridad del dato financiero.</p>
+                    <div class="tags"><span class="tag">Python</span><span class="tag">DAMA-DMBOK</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="gov">
-                    <h3>Auditoría & Compliance</h3>
-                    <p class="card-desc">Sistema automatizado para auditoría de datos regulatorios alineado a estándares bancarios (BCBS 239).</p>
+                    <h3>Auditoría Regulatoria (BCBS 239)</h3>
+                    <p class="card-desc">Sistema automatizado de compliance para la agregación de datos de riesgo, generando reportes de linaje y trazabilidad.</p>
                     <div class="tags"><span class="tag">LegalTech</span><span class="tag">Compliance</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
 
                 <div class="project-card" data-category="java">
-                    <h3>Procesamiento Financiero</h3>
-                    <p class="card-desc">Sistema robusto en Java para la ingesta y procesamiento estructurado de transacciones financieras.</p>
+                    <h3>Procesamiento Transaccional</h3>
+                    <p class="card-desc">Backend en Java diseñado para la ingesta masiva y validación de transacciones financieras con manejo robusto de excepciones.</p>
                     <div class="tags"><span class="tag">Java OOP</span><span class="tag">Backend</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="java math">
-                    <h3>Motor Numérico</h3>
-                    <p class="card-desc">Desarrollo de librería matemática enfocada en precisión decimal (BigDecimal) para cálculos monetarios.</p>
-                    <div class="tags"><span class="tag">Java</span><span class="tag">Math</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Motor de Precisión Numérica</h3>
+                    <p class="card-desc">Librería customizada utilizando `BigDecimal` para cálculos monetarios sin errores de punto flotante (IEEE 754).</p>
+                    <div class="tags"><span class="tag">Java</span><span class="tag">Precision</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="java">
-                    <h3>Sistema Multihilo</h3>
-                    <p class="card-desc">Uso de Java Concurrency para procesamiento paralelo de datasets masivos, reduciendo tiempos de ejecución.</p>
-                    <div class="tags"><span class="tag">Threads</span><span class="tag">Performance</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Sistema Concurrente Multihilo</h3>
+                    <p class="card-desc">Implementación de `ExecutorService` y `Futures` para procesamiento paralelo de grandes volúmenes de datos, reduciendo latencia.</p>
+                    <div class="tags"><span class="tag">Concurrency</span><span class="tag">Threads</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="java">
-                    <h3>Backend Analítico</h3>
-                    <p class="card-desc">Arquitectura modular para separar la lógica de negocio de la capa de análisis de datos.</p>
-                    <div class="tags"><span class="tag">Architecture</span><span class="tag">Design Patterns</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Arquitectura Backend Modular</h3>
+                    <p class="card-desc">Diseño de software desacoplado aplicando patrones de diseño (Factory, Singleton) para escalabilidad de servicios analíticos.</p>
+                    <div class="tags"><span class="tag">Design Patterns</span><span class="tag">Architecture</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="java data">
-                    <h3>Integración Híbrida</h3>
-                    <p class="card-desc">Orquestación de procesos donde Java maneja el backend y llama scripts de Python para análisis estadístico.</p>
-                    <div class="tags"><span class="tag">Java + Python</span><span class="tag">Interoperabilidad</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Integración Híbrida Java-Python</h3>
+                    <p class="card-desc">Interoperabilidad entre backend Java de alto rendimiento y scripts de Python para análisis estadístico avanzado vía procesos de sistema.</p>
+                    <div class="tags"><span class="tag">Interoperability</span><span class="tag">Fullstack</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
 
                 <div class="project-card" data-category="quant java">
-                    <h3>Pricing Black-Scholes</h3>
-                    <p class="card-desc">Implementación del modelo Black-Scholes-Merton para valuación de opciones europeas y cálculo de Griegas.</p>
-                    <div class="tags"><span class="tag">Quant</span><span class="tag">Derivados</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Motor Pricing Black-Scholes</h3>
+                    <p class="card-desc">Implementación algorítmica del modelo Black-Scholes-Merton para la valuación precisa de opciones europeas y cálculo de 'Griegas'.</p>
+                    <div class="tags"><span class="tag">Quant</span><span class="tag">Derivatives</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="quant java">
-                    <h3>Motor Monte Carlo</h3>
-                    <p class="card-desc">Simulación estocástica multihilo para valoración de activos bajo incertidumbre y caminos aleatorios.</p>
+                    <h3>Simulación Monte Carlo Multihilo</h3>
+                    <p class="card-desc">Motor estocástico de alto rendimiento para simular millones de escenarios de precios de activos y valorar opciones exóticas.</p>
                     <div class="tags"><span class="tag">Stochastic</span><span class="tag">Risk</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="quant math">
-                    <h3>Optimización Discreta</h3>
-                    <p class="card-desc">Algoritmos para selección óptima de activos sujetos a restricciones presupuestarias y de riesgo.</p>
-                    <div class="tags"><span class="tag">Optimization</span><span class="tag">Finance</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <h3>Optimización Cuantitativa Discreta</h3>
+                    <p class="card-desc">Solución a problemas de asignación de activos bajo restricciones presupuestarias y de riesgo mediante programación entera.</p>
+                    <div class="tags"><span class="tag">Optimization</span><span class="tag">OR</span></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="quant">
-                    <h3>Procesos Estocásticos</h3>
-                    <p class="card-desc">Modelado del Movimiento Browniano Geométrico (GBM) para proyectar escenarios de mercado.</p>
+                    <h3>Modelado de Procesos Estocásticos</h3>
+                    <p class="card-desc">Simulación numérica del Movimiento Browniano Geométrico (GBM) y procesos de reversión a la media para proyecciones financieras.</p>
                     <div class="tags"><span class="tag">Math Fin</span><span class="tag">Modeling</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
                 <div class="project-card" data-category="quant java">
-                    <h3>Mini Risk Engine</h3>
-                    <p class="card-desc"><strong>(Capstone)</strong> Sistema integral que unifica pricing, simulación y cálculo de VaR (Value at Risk).</p>
+                    <h3>Risk Engine (Capstone)</h3>
+                    <p class="card-desc"><strong>Sistema Integral:</strong> Plataforma que unifica pricing, simulación de escenarios y cálculo de VaR (Value at Risk) con arquitectura robusta.</p>
                     <div class="tags"><span class="tag">Risk Engine</span><span class="tag">Java</span></div>
-                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creador" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
+                    <div class="card-footer"><a href="https://github.com/olivareseduardo38655-creator" target="_blank" class="btn-code"><i class="fas fa-code"></i> Ver Código</a></div>
                 </div>
 
             </div>
@@ -374,21 +389,15 @@
             let cards = document.querySelectorAll('.project-card');
             let buttons = document.querySelectorAll('.filter-btn');
 
-            // Actualizar botones
             buttons.forEach(btn => btn.classList.remove('active'));
-            // Encontrar el botón clickeado y activarlo (el evento se pasa implícitamente o se busca por texto/onclick)
-            // Una forma segura es iterar y ver cuál tiene el onclick que coincida, o simplemente:
-            // Usamos event.target si se dispara por click directo.
             if(event && event.target) {
                 event.target.classList.add('active');
             }
 
-            // Filtrar tarjetas
             cards.forEach(card => {
                 if (category === 'all') {
-                    card.style.display = 'flex'; // Usamos flex para mantener el diseño
+                    card.style.display = 'flex'; 
                 } else {
-                    // Checkeamos si el atributo data-category contiene la categoría
                     if (card.getAttribute('data-category').includes(category)) {
                         card.style.display = 'flex';
                     } else {
